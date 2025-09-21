@@ -6,20 +6,13 @@
 <title>PostMyFreight — Where brokers and truckers meet.</title>
 <meta name="description" content="Pre-register to the lightweight directory connecting independent brokers and drivers." />
 <style>
-  :root{
-    --bg:#0f172a;--card:#0b1324;--ink:#e5e7eb;--muted:#9ca3af;--border:#1f2937;
-    --accent:#22c55e;--danger:#ef4444;--focus:#93c5fd;
-  }
+  :root{--bg:#0f172a;--card:#0b1324;--ink:#e5e7eb;--muted:#9ca3af;--border:#1f2937;--accent:#22c55e;--danger:#ef4444;--focus:#93c5fd;}
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{
-    margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Roboto,Arial,sans-serif;
-    color:var(--ink);background:
-      radial-gradient(900px 500px at 80% -10%, rgba(96,165,250,.18), transparent 60%),
-      radial-gradient(700px 400px at 10% -10%, rgba(34,197,94,.18), transparent 60%),
-      var(--bg);
-    display:grid;place-items:center;padding:20px;
-  }
+  body{margin:0;font-family:ui-sans-serif,system-ui,Segoe UI,Inter,Roboto,Arial,sans-serif;color:var(--ink);
+    background:radial-gradient(900px 500px at 80% -10%, rgba(96,165,250,.18), transparent 60%),
+               radial-gradient(700px 400px at 10% -10%, rgba(34,197,94,.18), transparent 60%),var(--bg);
+    display:grid;place-items:center;padding:20px}
   .wrap{width:100%;max-width:820px}
   .hero{text-align:center;margin-bottom:18px}
   .badge{display:inline-block;padding:6px 10px;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.8rem;background:rgba(255,255,255,.02)}
@@ -34,10 +27,7 @@
   .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media (max-width:720px){.row{grid-template-columns:1fr}}
   label{display:block;margin-bottom:6px;color:#cbd5e1;font-size:.92rem}
-  input,select,textarea{
-    width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);
-    background:#0a1020;color:var(--ink);outline:none;
-  }
+  input,select,textarea{width:100%;padding:12px;border-radius:10px;border:1px solid var(--border);background:#0a1020;color:var(--ink);outline:none}
   textarea{min-height:92px;resize:vertical}
   input:focus,select:focus,textarea:focus{border-color:var(--focus);box-shadow:0 0 0 3px rgba(147,197,253,.15)}
   .seg{display:flex;gap:8px;background:#0a1020;border:1px solid var(--border);border-radius:12px;padding:6px}
@@ -78,8 +68,8 @@
             <div>
               <label for="country">Country</label>
               <select id="country" name="country">
-                <option value="US" selected>United States</option>
-                <option value="CA">Canada</option>
+                <option value="CA" selected>Canada</option>
+                <option value="US">Unitied States</option>
               </select>
             </div>
             <div>
@@ -103,9 +93,15 @@
             </div>
           </div>
 
-          <div class="consent">
-            <input type="checkbox" id="consent" />
-            <label for="consent" class="hint">Okay to contact me about my profile and early access.</label>
+          <div class="row">
+            <div>
+              <label for="stateprov">State / Province</label>
+              <input id="stateprov" name="stateprov" type="text" placeholder="TX · ON · QC" />
+            </div>
+            <div class="consent">
+              <input type="checkbox" id="consent" />
+              <label for="consent" class="hint">Okay to contact me about my profile and early access.</label>
+            </div>
           </div>
 
           <div class="actions">
@@ -126,13 +122,30 @@
               </div>
               <div id="idWrapUS">
                 <label for="mc">MC / DOT (optional)</label>
-                <input id="mc" name="mc" type="text" placeholder="MC 123456 / DOT 1234567" />
+                <input id="mc" name="mc" type="text" placeholder="MC 123456 · DOT 1234567" />
               </div>
               <div id="idWrapCA" class="hide">
-                <label for="nsc">NSC / Provincial # (optional)</label>
-                <input id="nsc" name="nsc" type="text" placeholder="e.g., NSC (AB) / CVOR (ON)" />
+                <label for="nsc_broker">NSC / Provincial # (optional)</label>
+                <input id="nsc_broker" name="nsc_broker" type="text" placeholder="e.g., NSC (AB) · CVOR (ON)" />
               </div>
             </div>
+
+            <div class="row">
+              <div>
+                <label for="scac">SCAC (optional)</label>
+                <input id="scac" name="scac" type="text" placeholder="e.g., ABCD" />
+              </div>
+              <div>
+                <label for="pref_equipment">Preferred equipment</label>
+                <input id="pref_equipment" name="pref_equipment" type="text" placeholder="Dry Van, Reefer, Flatbed" />
+              </div>
+            </div>
+
+            <div>
+              <label for="freight_types">Typical freight (optional)</label>
+              <input id="freight_types" name="freight_types" type="text" placeholder="produce, steel, general freight" />
+            </div>
+
             <div>
               <label for="lanes">Primary lanes (e.g., TX→FL · ON↔QC)</label>
               <textarea id="lanes" name="lanes" placeholder="List a few lanes you cover"></textarea>
@@ -156,14 +169,16 @@
                 </select>
               </div>
             </div>
+
             <div id="equipmentOtherWrap" class="hide">
               <label for="equipmentOther">Describe equipment</label>
               <input id="equipmentOther" name="equipmentOther" type="text" placeholder="e.g., Conestoga, RGN, turnpike doubles" />
             </div>
+
             <div class="row">
               <div>
                 <label for="homebase">Home base</label>
-                <input id="homebase" name="homebase" type="text" placeholder="Dallas, TX · Calgary, AB" />
+                <input id="homebase" name="homebase" type="text" placeholder="Dallas, TX · Brampton, ON" />
               </div>
               <div>
                 <label for="radius" id="radiusLabel">Radius (miles)</label>
@@ -173,10 +188,39 @@
                 </select>
               </div>
             </div>
+
+            <div class="row">
+              <div>
+                <label for="nsc_driver">NSC / Provincial # (optional)</label>
+                <input id="nsc_driver" name="nsc_driver" type="text" placeholder="e.g., CVOR (ON), NSC (AB)" />
+              </div>
+              <div>
+                <label for="years_exp">Years of experience</label>
+                <select id="years_exp" name="years_exp">
+                  <option value="">Select</option>
+                  <option>&lt;1</option><option>1-2</option><option>3-5</option><option>6-10</option><option>10+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div>
+                <label for="driver_company">Company / DBA (optional)</label>
+                <input id="driver_company" name="driver_company" type="text" placeholder="Hagenson Transport LLC" />
+              </div>
+              <div>
+                <label for="leased_to">Leased to carrier (optional)</label>
+                <input id="leased_to" name="leased_to" type="text" placeholder="ABC Logistics (MC ######)" />
+              </div>
+            </div>
+
+            <div class="consent">
+              <input type="checkbox" id="insured" />
+              <label for="insured" class="hint">I have active cargo/liability insurance</label>
+            </div>
           </div>
 
           <div id="formError" class="error hide"></div>
-          <div id="formSuccess" class="success hide">Thanks — your spot is saved. We’ll email you when the directory is live.</div>
 
           <div class="actions">
             <button class="btn secondary" id="backTo1" type="button">Back</button>
@@ -190,6 +234,12 @@
           <input id="website" name="website" type="text" autocomplete="off" />
         </div>
       </form>
+
+      <!-- Thank-you state (shown after successful submit) -->
+      <div id="thankYou" class="success hide" style="margin-top:12px">
+        <h3 style="margin:0 0 6px">Thanks — your spot is saved.</h3>
+        <p class="hint" style="margin:0">We’ll email you when the directory is live.</p>
+      </div>
     </div>
 
     <p class="footer">
@@ -201,7 +251,7 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     const USE_SUPABASE = true;
-    const SUPABASE_URL = "https://gmtvmcywfvbgbqulmhlw.supabase.co";              // e.g., https://xxxxx.supabase.co
+    const SUPABASE_URL = "https://gmtvmcywfvbgbqulmhlw.supabase.co";              // e.g., https://xxxxx.supabase.co 
     const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdHZtY3l3ZnZiZ2JxdWxtaGx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0Njc3NzQsImV4cCI6MjA3NDA0Mzc3NH0.gWoasQWA6nzmH2ZrFtl6YcRnEEXhF5VaXpJVUYJaqvI";        // public anon key
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
   </script>
@@ -214,9 +264,12 @@
       const btnBroker=document.getElementById('btnBroker'), btnDriver=document.getElementById('btnDriver');
       const brokerFields=document.getElementById('brokerFields'), driverFields=document.getElementById('driverFields');
       const roleError=document.getElementById('roleError');
-      const form=document.getElementById('preRegForm'), formError=document.getElementById('formError'), formSuccess=document.getElementById('formSuccess');
+      const form=document.getElementById('preRegForm'), formError=document.getElementById('formError');
       const submitBtn=document.getElementById('submitBtn');
+      const thankYou=document.getElementById('thankYou');
+
       const equipmentSelect=document.getElementById('equipment'), equipmentOtherWrap=document.getElementById('equipmentOtherWrap'), equipmentOtherInput=document.getElementById('equipmentOther');
+
       const countrySelect=document.getElementById('country'), idWrapUS=document.getElementById('idWrapUS'), idWrapCA=document.getElementById('idWrapCA'), radiusLabel=document.getElementById('radiusLabel');
 
       const SUPABASE_TABLE='preregistrations';
@@ -263,35 +316,51 @@
       }
 
       form.addEventListener('submit', async (e)=>{
-        e.preventDefault(); formError.classList.add('hide'); formSuccess.classList.add('hide');
+        e.preventDefault(); formError.classList.add('hide');
 
         // honeypot
-        if(document.getElementById('website').value.trim()!==''){ formSuccess.classList.remove('hide'); form.reset(); backStep1(); return; }
+        if(document.getElementById('website').value.trim()!==''){
+          form.classList.add('hide'); thankYou.classList.remove('hide'); return;
+        }
 
         submitBtn.disabled=true; submitBtn.textContent='Submitting…';
 
         const country=countrySelect.value;
         const payload={
           country,
+          stateprov: document.getElementById('stateprov').value.trim() || null,
           role,
-          email:document.getElementById('email').value.trim(),
-          phone:document.getElementById('phone').value.trim()||null,
-          consent:document.getElementById('consent').checked||false,
-          ts:new Date().toISOString()
+          email: document.getElementById('email').value.trim(),
+          phone: document.getElementById('phone').value.trim() || null,
+          consent: document.getElementById('consent').checked || false,
+          ts: new Date().toISOString()
         };
 
         if(role==='broker'){
-          payload.company=document.getElementById('company').value.trim()||null;
-          if(country==='CA'){ payload.nsc=document.getElementById('nsc').value.trim()||null; payload.mc=null; }
-          else { payload.mc=document.getElementById('mc').value.trim()||null; payload.nsc=null; }
-          payload.lanes=document.getElementById('lanes').value.trim()||null;
+          payload.company = document.getElementById('company').value.trim() || null;
+          if(country==='CA'){
+            payload.nsc = document.getElementById('nsc_broker').value.trim() || null;
+            payload.mc = null;
+          } else {
+            payload.mc = document.getElementById('mc').value.trim() || null;
+            payload.nsc = null;
+          }
+          payload.scac = document.getElementById('scac').value.trim() || null;
+          payload.pref_equipment = document.getElementById('pref_equipment').value.trim() || null;
+          payload.freight_types = document.getElementById('freight_types').value.trim() || null;
+          payload.lanes = document.getElementById('lanes').value.trim() || null;
         } else {
-          payload.name=document.getElementById('name').value.trim()||null;
-          let eq=equipmentSelect.value||null;
-          if(eq==='Other'){ const d=equipmentOtherInput.value.trim(); eq=d?`Other (${d})`:'Other'; }
-          payload.equipment=eq;
-          payload.homebase=document.getElementById('homebase').value.trim()||null;
-          payload.radius=document.getElementById('radius').value||null; // numeric or 'Nationwide'
+          payload.name = document.getElementById('name').value.trim() || null;
+          let eq = equipmentSelect.value || null;
+          if(eq==='Other'){ const d = equipmentOtherInput.value.trim(); eq = d ? `Other (${d})` : 'Other'; }
+          payload.equipment = eq;
+          payload.homebase = document.getElementById('homebase').value.trim() || null;
+          payload.radius = document.getElementById('radius').value || null; // numeric or 'Nationwide'
+          payload.nsc = document.getElementById('nsc_driver').value.trim() || null;
+          payload.years_exp = document.getElementById('years_exp').value || null;
+          payload.insured = document.getElementById('insured').checked || false;
+          payload.driver_company = document.getElementById('driver_company').value.trim() || null;
+          payload.leased_to = document.getElementById('leased_to').value.trim() || null;
         }
 
         try{
@@ -299,14 +368,17 @@
             const { error } = await sb.from(SUPABASE_TABLE).insert([payload]);
             if(error) throw error;
           } else {
-            const res=await fetch('/api/pre-register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+            const res = await fetch('/api/pre-register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
             if(!res.ok) throw new Error('Network response was not ok');
           }
-          formSuccess.textContent='Thanks — your spot is saved. We’ll email you when the directory is live.';
-          formSuccess.classList.remove('hide');
-          form.reset(); backStep1(); applyCountryUI(); equipmentOtherWrap.classList.add('hide');
+          // Show thank-you state
+          form.classList.add('hide');
+          thankYou.classList.remove('hide');
+          window.scrollTo({top:0,behavior:'smooth'});
         }catch(err){
-          formError.textContent='Something went wrong. Please try again.'; formError.classList.remove('hide'); console.error(err);
+          formError.textContent='Something went wrong. Please try again.';
+          formError.classList.remove('hide');
+          console.error(err);
         }finally{
           submitBtn.disabled=false; submitBtn.textContent='Claim My Spot';
         }
