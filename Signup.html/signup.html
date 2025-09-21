@@ -185,7 +185,7 @@
   </div>
 
   <!-- Optional: Supabase client (uncomment & fill values to use) -->
-  <!--
+  
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script>
     const USE_SUPABASE = true;
@@ -193,7 +193,7 @@
     const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdHZtY3l3ZnZiZ2JxdWxtaGx3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg0Njc3NzQsImV4cCI6MjA3NDA0Mzc3NH0.gWoasQWA6nzmH2ZrFtl6YcRnEEXhF5VaXpJVUYJaqvI";
     const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
   </script>
-  -->
+  
   <script>
     (function(){
       const btnBroker = document.getElementById('btnBroker');
@@ -212,7 +212,7 @@
       const equipmentOtherInput = document.getElementById('equipmentOther');
 
       // Flip this to true if you uncommented the Supabase block above
-      const USE_SUPABASE = false; // set to true if using Supabase snippet
+      const USE_SUPABASE = true; // set to true if using Supabase snippet
       const SUPABASE_TABLE = 'preregistrations';
 
       let role = null; // 'broker' | 'driver'
